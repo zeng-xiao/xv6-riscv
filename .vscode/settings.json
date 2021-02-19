@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "*.txt": "txt",
+        "*.cmake": "shellscript",
+        "*.mk": "shellscript",
+        "*.bp": "shellscript",
+        "*.shi": "shellscript",
+        "*.inc": "c",
+        "*.log": "log",
+        "*.cfg": "tcl",
+        "atomic": "cpp",
+        "*.tcc": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp",
+        "__config": "cpp",
+        "locale": "cpp",
+        "string_view": "cpp"
+    }
+}
