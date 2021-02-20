@@ -91,11 +91,6 @@ walk(pagetable_t pagetable, uint64 va, int alloc)
       if(!alloc || (pagetable = (pde_t*)kalloc()) == 0)
         return 0;
       memset(pagetable, 0, PGSIZE);
-      unsigned long long int pte1 = ((uint64)0x87ffe000) >> 12;
-      unsigned long long int pte2 = pte1 << 10;
-      unsigned long long int pte3 = pte2 | (1L << 0);
-      *pte = ((((uint64)0x87ffe000) >> 12) << 10) | (1L << 0);
-      *pte = PA2PTE(pagetable) | PTE_V;
       *pte = PA2PTE(pagetable) | PTE_V;
     }
   }
