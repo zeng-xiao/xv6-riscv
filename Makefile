@@ -84,6 +84,13 @@ $U/initcode: $U/initcode.S
 	$(OBJCOPY) -S -O binary $U/initcode.out $U/initcode
 	$(OBJDUMP) -S $U/initcode.o > $U/initcode.asm
 
+######## NOTES ########
+# -N,         --omagic         Do not page align data, do not make text readonly
+# -e ADDRESS, --entry ADDRESS  Set start address
+# -S --strip-all               Remove all symbol and relocation information
+# -O --output-target <bfdname> Create an output file in format <bfdname>
+######## NOTES ########
+
 tags: $(OBJS) _init
 	etags *.S *.c
 
@@ -168,5 +175,6 @@ qemu: $K/kernel fs.img
 
 qemu-gdb: $K/kernel .gdbinit fs.img
 	@echo "*** Now run 'gdb' in another window." 1>&2
+	@echo add-auto-load-safe-path ${PWD}/.gdbinit >> ${HOME}/.gdbinit
 	$(QEMU) $(QEMUOPTS) -S $(QEMUGDB)
 

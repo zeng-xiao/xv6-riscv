@@ -133,8 +133,9 @@ main(int argc, char *argv[])
     char *shortname;
     if(strncmp(argv[i], "user/", 5) == 0)
       shortname = argv[i] + 5;
-    else
-      shortname = argv[i];
+    else{
+      printf("argv[%d] = %s\n", i, argv[i]);
+      shortname = argv[i];}
     
     assert(index(shortname, '/') == 0);
 
