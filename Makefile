@@ -14,7 +14,6 @@ OBJS = \
   $K/vm.o \
   $K/proc.o \
   $K/swtch.o \
-  $K/trampoline.o \
   $K/trap.o \
   $K/syscall.o \
   $K/sysproc.o \
@@ -73,10 +72,13 @@ endif
 
 LDFLAGS = -z max-page-size=4096
 
-$K/kernel: $(OBJS) $K/kernel.ld $U/initcode
-	$(LD) $(LDFLAGS) -T $K/kernel.ld -o $K/kernel $(OBJS) 
+$K/kernel: $(OBJS) $K/trampoline.o $K/kernel.ld $U/initcode
+	$(LD) $(LDFLAGS) -T $K/kernel.ld -o $K/kernel $K/trampoline.o $(OBJS) 
 	$(OBJDUMP) -S $K/kernel > $K/kernel.asm
 	$(OBJDUMP) -t $K/kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $K/kernel.sym
+
+$K/trampoline.o : $K/trampoline.S
+	riscv64-unknown-elf-gcc -g -g3 -ggdb -gdwarf-4 -O0 -fno-omit-frame-pointer -c $K/trampoline.S -o $K/trampoline.o 
 
 $U/initcode: $U/initcode.S
 	$(CC) $(CFLAGS) -march=rv64g -nostdinc -I. -Ikernel -c $U/initcode.S -o $U/initcode.o
