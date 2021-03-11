@@ -72,7 +72,7 @@ endif
 
 LDFLAGS = -z max-page-size=4096
 
-$K/kernel: $(OBJS) $K/trampoline.o $K/kernel.ld $U/initcode
+$K/kernel: $(OBJS) $K/trampoline.o $K/kernel.ld $U/initcode .gdbinit
 	$(LD) $(LDFLAGS) -T $K/kernel.ld -o $K/kernel $K/trampoline.o $(OBJS) 
 	$(OBJDUMP) -S $K/kernel > $K/kernel.asm
 	$(OBJDUMP) -t $K/kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $K/kernel.sym
