@@ -176,8 +176,7 @@ qemu: $K/kernel fs.img
 	sed "s/:1234/:$(GDBPORT)/" < $^ > $@
 	@echo add-auto-load-safe-path ${PWD}/.gdbinit >> ${HOME}/.gdbinit
 
-qemu-gdb: $K/kernel .gdbinit fs.img .gdbinit
+qemu-gdb: $K/kernel fs.img .gdbinit
 	@echo "*** Now run 'gdb' in another window." 1>&2
-	@echo add-auto-load-safe-path ${PWD}/.gdbinit >> ${HOME}/.gdbinit
 	$(QEMU) $(QEMUOPTS) -S $(QEMUGDB)
 
