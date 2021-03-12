@@ -5,7 +5,6 @@ if [[ ! -f kernel/kernel ]]; then
     make -j4
     echo $?
 fi
-ls .gdbinit
 make qemu-gdb > /dev/null 2>&1 &
 sleep 0.1 
 #riscv64-unknown-elf-gdb -q |& tee gdb.log
