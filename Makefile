@@ -1,4 +1,3 @@
-#export PATH=$(PATH):/home/user/riscv-gnu-toolchain/rv64Tools/bin
 K=kernel
 U=user
 
@@ -56,7 +55,7 @@ LD = $(TOOLPREFIX)ld
 OBJCOPY = $(TOOLPREFIX)objcopy
 OBJDUMP = $(TOOLPREFIX)objdump
 
-CFLAGS = -g -g3 -ggdb -gdwarf-4 -O0 -fno-omit-frame-pointer
+CFLAGS = -g -g3 -ggdb -gdwarf-4 -O0 -fno-omit-frame-pointer -march=rv64g -mabi=lp64d -ffreestanding
 #CFLAGS = -Wall -g -g3 -ggdb -gdwarf-4 -O0 -fno-omit-frame-pointer
 CFLAGS += -MD
 CFLAGS += -mcmodel=medany
