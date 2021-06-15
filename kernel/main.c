@@ -10,6 +10,28 @@ volatile static int started = 0;
 void
 main()
 {
+  int a1 = 10; int b1 = 20;
+	int a1b1 = a1 + b1;
+
+	unsigned int a2 = 10; unsigned int b2 = 20;
+	unsigned int a2b2 = a2 + b2;
+
+	unsigned int a3 = 10; int b3 = 20;
+	int a3b3 = a3 + b3;
+	unsigned int a3b3_2 = a3 + b3;
+
+	long a4 = 10; int b4 = 20;
+	long a4b4 = a4 + b4;
+
+	long a5 = 10; unsigned int b5 = 20;
+	long a5b5 = a5 + b5;
+
+	long a6 = 10; int b6 = 20;
+	unsigned long a6b6 = a6 + b6;
+
+	int a7 = 2147483647; int b7 = 2147483647; // 2^31-1
+	int a7b7 = a7 + b7;
+
   if(cpuid() == 0){
     consoleinit();
     printfinit();

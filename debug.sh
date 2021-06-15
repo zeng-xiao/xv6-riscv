@@ -1,3 +1,8 @@
+#!/usr/bin/env bash
+#set -ex
+
+export PATH=$PATH:/home/user/riscv-gnu-toolchain/rv64Tools/bin
+
 ps -ef | grep 'qemu-system-riscv64' | grep -v 'grep'| awk '{print $2}'| xargs kill -9 > /dev/null 2>&1 &
 sleep 0.1
 
