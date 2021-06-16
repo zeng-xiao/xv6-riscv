@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 #set -ex
+riscvGCC=e510-gcc-base/riscv-gnu-toolchain
+#riscvGCC=riscv-gnu-toolchain
 
-export PATH=$PATH:/home/user/riscv-gnu-toolchain/rv64Tools/bin
+export PATH=$PATH:/home/user/$riscvGCC/rv64Tools/bin
 
 ps -ef | grep 'qemu-system-riscv64' | grep -v 'grep'| awk '{print $2}'| xargs kill -9 > /dev/null 2>&1 &
 sleep 0.1
