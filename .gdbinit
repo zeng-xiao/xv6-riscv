@@ -6,5 +6,6 @@ set disassemble-next-line auto
 set riscv use-compressed-breakpoints yes
 
 set scheduler-locking on
-b kinit 
+#b usertrapret 
+b main
 c
