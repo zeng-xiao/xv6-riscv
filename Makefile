@@ -178,5 +178,6 @@ qemu: $K/kernel fs.img
 
 qemu-gdb: $K/kernel fs.img .gdbinit
 	@echo "*** Now run 'gdb' in another window." 1>&2
+	@echo $(QEMU) $(QEMUOPTS) -S $(QEMUGDB)
 	$(QEMU) $(QEMUOPTS) -S $(QEMUGDB)
 
