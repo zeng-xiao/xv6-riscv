@@ -4,7 +4,7 @@ riscvGCC=e510-gcc-base/riscv-gnu-toolchain
 #riscvGCC=riscv-gnu-toolchain
 
 export PATH=$PATH:/home/user/$riscvGCC/rv64Tools/bin
-
+echo "add-auto-load-safe-path `pwd`/.gdbinit" >> /home/user/.gdbinit 
 ps -ef | grep 'qemu-system-riscv64' | grep -v 'grep'| awk '{print $2}'| xargs kill -9 > /dev/null 2>&1 &
 sleep 0.1
 
